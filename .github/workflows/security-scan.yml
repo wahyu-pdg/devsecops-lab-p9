@@ -10,6 +10,13 @@ jobs:
   build-and-scan:
     name: Build & Security Scan
     runs-on: ubuntu-latest
+    
+    # TAMBAHKAN BLOK PERMISSIONS INI:
+    permissions:
+      security-events: write
+      contents: read
+      actions: read
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
