@@ -17,12 +17,12 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -f Dockerfile.secure \
-          -t my-app:${{ github.sha }}
+          -t app-secure:${{ github.sha }} .
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: "my-app:${{ github.sha }}"
+          image-ref: "app-secure:${{ github.sha }}"
           format: "sarif"
           output: "trivy-results.sarif"
           severity: "CRITICAL, HIGH"
